@@ -16,7 +16,7 @@
  </style>
 </head>
 <body>
-<div class=contianer">
+<div class="contianer">
 	<div data-role="content" class="ui-content">
         <h2 class="st">약관동의</h2>
         <article class="agree_fr">

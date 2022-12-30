@@ -11,7 +11,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>회원목록</title>
-	
+<jsp:include page="../include/head.jsp"></jsp:include>
 </head>
 <body>
 	<header id="header">
@@ -21,7 +21,7 @@
     <div class="row column text-center">
       <h2 class="h1">회원 목록</h2>
       <hr>
-      <table>
+      <table id="tb">
       	<thead>
       		<tr>
       			<th width="80">No</th>

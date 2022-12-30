@@ -107,13 +107,13 @@ public class MemberController {
 	}
 	
 	//로그인 폼 로딩
-	@RequestMapping("loginForm.do")  
+	@GetMapping("loginForm")  
 	public String memberLoginForm(Model model) throws Exception {
 		return "member/loginForm";
 	}
 	
 	//로그인 	- 컨트롤러에서 세션 처리
-	@RequestMapping(value="signin.do", method = RequestMethod.POST)
+	@PostMapping(value="signin.do")
 	public String memberSignin(@RequestParam String id, @RequestParam String pw, HttpServletRequest req, RedirectAttributes rttr) throws Exception {
 		session.invalidate();
 		MemberDTO dto = new MemberDTO();

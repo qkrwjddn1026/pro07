@@ -1,0 +1,6 @@
+package kr.go.me.model;
+
+
+public interface BoardDAO {
+	public list<BoardDTO> boardList() throws Exception;
+}
