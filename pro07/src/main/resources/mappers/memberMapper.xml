@@ -28,7 +28,7 @@
 	
 	<!-- 회원 가입 -->
 	<insert id="memberInsert">
-		insert into member values (#{id}, #{pw}, #{name}, #{tel}, #{addr}, default)
+		insert into member(id,pw,name,tel,addr,regdate) values (#{id}, #{pw}, #{name}, #{tel}, #{addr},default)
 	</insert>
 	
 	<!-- 회원 정보 변경  -->

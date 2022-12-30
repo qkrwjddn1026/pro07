@@ -16,6 +16,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -40,40 +41,40 @@ public class MemberController {
 	HttpSession session;
 	
 	// 멤버 목록
-	@RequestMapping(value="list.do", method = RequestMethod.GET)
+	@GetMapping("list")
 	public String memberList(Model model) throws Exception {
-		List<MemberDTO> memberList = memberService.membetList();
+		List<MemberDTO> memberList = memberService.memberList();
 		model.addAttribute("memberList", memberList);
-		return "users/list";
+		return "member/list";
 	}
 	
 	/* 관리자 회원 정보 보기 */
-	@RequestMapping(value="getMember.do", method = RequestMethod.GET)
+	@GetMapping("/detail")
 	public String getMember(@RequestParam String id, Model model) throws Exception {
 		MemberDTO member = memberService.getMember(id);
 		model.addAttribute("member", member);
-		return "users/detail";
+		return "member/detail";
 	}
 
 	/* 일반회원 정보보기 */
-	@RequestMapping(value="read.do", method = RequestMethod.GET)
+	@GetMapping("read")
 	public String memberRead(Model model, HttpServletRequest request) throws Exception {
 		String id = (String) session.getAttribute("sid");
 		MemberDTO member = memberService.getMember(id);
 		model.addAttribute("member", member);
-		return "users/read";
+		return "member/read";
 	}
 	
 	
 	//회원 가입 - 약관 동의 페이지 로딩
-	@GetMapping("agree.do")
+	@GetMapping("agree")
 	public String getAgree(Model model) throws Exception {
-		return "users/agree";
+		return "member/agree";
 	}
 	//회원 가입 - 회원가입폼 페이지 로딩
-	@GetMapping("join.do")
+	@GetMapping("join")
 	public String getJoin(Model model) throws Exception {
-		return "users/insert";
+		return "member/join";
 	}
 	
 	//회원 가입 - Ajax로 아이디 중복 체크 
@@ -95,7 +96,7 @@ public class MemberController {
 		out.println(json.toString());
 	}
 	//회원 가입 - 회원 가입 처리
-	@RequestMapping(value="insert.do", method = RequestMethod.POST)
+	@PostMapping(value="insert.do")
 	public String memberWrite(MemberDTO member, Model model) throws Exception {
 		//비밀번호 암호화
 		String userpw = member.getPw();
@@ -108,18 +109,18 @@ public class MemberController {
 	//로그인 폼 로딩
 	@RequestMapping("loginForm.do")  
 	public String memberLoginForm(Model model) throws Exception {
-		return "users/loginForm";
+		return "member/loginForm";
 	}
 	
 	//로그인 	- 컨트롤러에서 세션 처리
 	@RequestMapping(value="signin.do", method = RequestMethod.POST)
 	public String memberSignin(@RequestParam String id, @RequestParam String pw, HttpServletRequest req, RedirectAttributes rttr) throws Exception {
 		session.invalidate();
-		MemberDTO mdto = new MemberDTO();
-		mdto.setPw(pw);
-		mdto.setId(id);
-		MemberDTO login = memberService.signIn(mdto);
-		boolean loginSuccess = pwdEncoder.matches(mdto.getPw(), login.getPw());
+		MemberDTO dto = new MemberDTO();
+		dto.setPw(pw);
+		dto.setId(id);
+		MemberDTO login = memberService.signIn(dto);
+		boolean loginSuccess = pwdEncoder.matches(dto.getPw(), login.getPw());
 		if(loginSuccess && login!=null) {
 			session.setAttribute("member", login);
 			session.setAttribute("sid", id);
@@ -130,22 +131,14 @@ public class MemberController {
 	} 
 	
 	//로그인 - Service에서 세션 처리
-	@RequestMapping(value="login.do", method = RequestMethod.POST)
-	public String memberLogin(MemberDTO mdto, HttpServletRequest req, RedirectAttributes rttr) throws Exception {
-		boolean loginSuccess = memberService.login(req);
-		if(loginSuccess) {		
-			return "home";
-		} else {
-			return "redirect:loginForm.do";
-		}
-	}
+
 	
 	//Ajax를 이용하는 방법
 	@RequestMapping(value="loginCheck.do", method = RequestMethod.POST)
-	public String memberLoginCtrl(MemberDTO mdto, RedirectAttributes rttr) throws Exception {
+	public String memberLoginCtrl(MemberDTO dto, RedirectAttributes rttr) throws Exception {
 		session.getAttribute("member");
-		MemberDTO member = memberService.loginCheck(mdto);
-		boolean mat = pwdEncoder.matches(mdto.getPw(), member.getPw());
+		MemberDTO member = memberService.loginCheck(dto);
+		boolean mat = pwdEncoder.matches(dto.getPw(), member.getPw());
 		if(mat==true && member!=null) {
 			logger.info("로그인 성공");
 			session.setAttribute("member", member);
@@ -162,10 +155,10 @@ public class MemberController {
 	
 	//회원 정보 변경
 	@RequestMapping(value="update.do", method = RequestMethod.POST)
-	public String memberUpdate(MemberDTO mdto, Model model) throws Exception {
-		String pwd = pwdEncoder.encode(mdto.getPw());
-		mdto.setPw(pwd);
-		memberService.memberUpdate(mdto);
+	public String memberUpdate(MemberDTO dto, Model model) throws Exception {
+		String pwd = pwdEncoder.encode(dto.getPw());
+		dto.setPw(pwd);
+		memberService.memberUpdate(dto);
 		return "redirect:/";
 	}
 
