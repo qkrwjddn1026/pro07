@@ -23,7 +23,7 @@ public class BoardDAOImpl implements BoardDAO{
 	// 공지사항 상세보기
 	@Override
 	public BoardDTO boardDetail(int no) throws Exception {
-		sqlSession.update("visitedUp",no);
+		/* sqlSession.update("visitedUp",no); */
 		return sqlSession.selectOne("board.boardDetail", no);
 	}
 	

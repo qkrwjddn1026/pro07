@@ -17,9 +17,6 @@
 <jsp:include page="./include/header.jsp"></jsp:include>
 </header>
 
-<P>  The time on the server is ${serverTime}. </P>
-<a href="${path1 }/member/list">리스트</a><br>
-<a href="${path1 }/member/agree">약관동의</a><br>
-<a href="${path1 }/member/join">회원가입</a>
+
 </body>
 </html>

@@ -25,7 +25,35 @@
 	      
 	      <hr>
 	      <div class="container">
-		      <table id="tb">
+	      <c:if test="${empty sid }">
+		      <table id="tb" >
+		      	<thead>
+		      		<tr>
+		      			<th width="80">No</th>
+		      			<th>Title</th>
+		      			<th width="120">RegDate</th>
+		      			<th width="100">Visited</th>
+		      		</tr>
+		      	</thead>
+		      	<tbody>
+		      	<c:forEach items="${boardList }" var="board" varStatus="status">
+		      		<tr>
+		      			<td>${status.count }</td>
+		      			<td><a href="">${board.title }</a></td>
+		      			<td>
+	      					<fmt:parseDate value="${board.regdate }" var="resdate" pattern="yyyy-MM-dd HH:mm:ss" />
+	      					<fmt:formatDate value="${resdate }" pattern="yyyy-MM-dd" />
+		      			</td>
+		      			<td>${board.visited }</td>
+		      		</tr>
+		      	</c:forEach>	
+		      	</tbody>
+		      </table>
+		      </c:if>
+		      
+		      <!--  -->
+		      <c:if test="${not empty sid }">
+		      <table>
 		      	<thead>
 		      		<tr>
 		      			<th width="80">No</th>
@@ -47,7 +75,8 @@
 		      		</tr>
 		      	</c:forEach>	
 		      	</tbody>
-		      </table>
+		      </table>		
+		      </c:if>      
 			      	    <%-- <c:if test='${sid eq "admin"}'>  --%>
 		      	<div class="button-group">
 				  <a class="button" href="${path1 }/board/insertForm">글쓰기</a>
@@ -57,6 +86,13 @@
 
 	    </div>
 	</div>
+	<script>
+	$(document).ready(function(){
+		$("#tb").click(function(){
+			alert("로그인하고봐라");
+		});
+	});
+	</script>
     <footer id="footer" class="footer-nav row expanded collapse">
     	
     	<h2>footer</h2>

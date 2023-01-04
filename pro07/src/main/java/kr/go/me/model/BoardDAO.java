@@ -11,3 +11,5 @@ public interface BoardDAO {
 	public void insertBoard(BoardDTO dto) throws Exception;
 	public void deleteBoard(int no) throws Exception;
 }
+
+
