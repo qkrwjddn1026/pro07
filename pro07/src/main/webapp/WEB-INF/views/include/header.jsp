@@ -9,7 +9,7 @@
   <header class="blog-header lh-1 py-3">
     <div class="row flex-nowrap justify-content-between align-items-center">
       <div class="col-4 pt-1">
-        <a class="link-secondary" href="/" ><img src="http://me.go.kr/images/home/main/2018/logo.png" alt="Logo" width="200px" height="40px"></a>
+        <a class="link-secondary" href="${path1 }" ><img src="http://me.go.kr/images/home/main/2018/logo.png" alt="Logo" width="200px" height="40px"></a>
       </div>
       <div class="col-4 d-flex justify-content-end align-items-center">
       <c:if test="${empty sid }">

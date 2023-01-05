@@ -19,6 +19,7 @@
 				
 				<div class="group">
 					<label for="title">title</label>
+					<input type="hidden" name="no" id="no" value="${board.no }" >
 					<input type="text" id="title" name="title" class="control" value="${board.title }" required>
 				</div>
 				<div class="group">
@@ -29,13 +30,13 @@
 					<label for="author">author</label>
 					<input type="text" id="author" name="author" class="control" value="${board.author }" required readonly>
 				</div>
-				
-				
+			
 			</div>
-		
-			<button type="submit">수정</button>
-			<button type="reset">취소</button>
+			
+			<input type="submit" class="submit success button" value="글 수정" >
+			<a class="button" href="${path1 }/board/list">글 목록</a>
 		</form>
 	</section>
+	
 </body>
 </html>

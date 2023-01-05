@@ -8,13 +8,17 @@
 		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="free"/>
+		<item key="selection" value="gson"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="gson"/>
+			<item value="tran"/>
+			<item value="tran "/>
+			<item value="dto"/>
 			<item value="board"/>
 			<item value="visi"/>
 			<item value="session"/>
@@ -23,17 +27,13 @@
 			<item value="boots"/>
 			<item value="cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"/>
 			<item value="datatables"/>
-			<item value="dto"/>
 			<item value="var"/>
 			<item value="logger"/>
 			<item value="emai"/>
-			<item value="users"/>
-			<item value="mdto"/>
-			<item value="com.cj.dto"/>
 		</list>
 		<list key="replacehistory">
-			<item value="free"/>
 			<item value="board"/>
+			<item value="free"/>
 			<item value="member"/>
 			<item value="dto"/>
 			<item value="kr.go.me.dto"/>

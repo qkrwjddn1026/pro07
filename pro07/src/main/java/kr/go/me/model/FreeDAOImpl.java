@@ -20,7 +20,7 @@ public class FreeDAOImpl implements FreeDAO{
 
 	@Override
 	public FreeDTO freeDetail(int no) throws Exception {
-		//session.update("visitedUp",no);
+		session.update("free.visitedUp",no);
 		return session.selectOne("free.freeDetail",no);
 	}
 

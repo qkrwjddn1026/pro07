@@ -5,7 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
+import org.springframework.transaction.annotation.Transactional;
 
 import kr.go.me.dto.BoardDTO;
 @Repository
@@ -21,9 +21,10 @@ public class BoardDAOImpl implements BoardDAO{
 	}
 
 	// 공지사항 상세보기
+	
 	@Override
 	public BoardDTO boardDetail(int no) throws Exception {
-		/* sqlSession.update("visitedUp",no); */
+		 sqlSession.update("board.visitedUp",no); 
 		return sqlSession.selectOne("board.boardDetail", no);
 	}
 	

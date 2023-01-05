@@ -38,8 +38,8 @@
 							</tr>				
 							<tr>
 								<th><label for="userpw">비밀번호</label></th>
-								<td><input type="password" name="pw" id="pw"  class="single100" value="${member.pw }" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
-									<p>(최소 8자리에서 최대 16자리까지, 숫자, 영문 대소문자, 특수문자가 각 1 문자 이상 포함되어야 함)</p>
+								<td><input type="password" name="pw" id="pw"  class="single100" value="${member.pw }"required><!--  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"  -->
+									<!-- <p>(최소 8자리에서 최대 16자리까지, 숫자, 영문 대소문자, 특수문자가 각 1 문자 이상 포함되어야 함)</p> -->
 								</td>
 							</tr>
 							<tr>
@@ -53,7 +53,7 @@
 						
 							<tr>
 								<th><label for="tel">전화번호</label></th>
-								<td><input type="tel" name="tel" id="tel" class="single100"  value="${member.tel }" pattern="[0-9]{2,3}-[0-9]{3,4}-[0-9]{4}" required></td>
+								<td><input type="tel" name="tel" id="tel" class="single100"  value="${member.tel }" pattern="[0-9]{2,3}[0-9]{3,4}[0-9]{4}" required></td>
 							</tr>
 							<tr>
 								<th><label for="" onclick="findAddr()">주소</label></th>

@@ -153,3 +153,10 @@
 12월 30, 2022 16:25:15.08 [12140:17332:1230/162515.087:ERROR:CONSOLE(0)] "Uncaught (in promise) Error: A listener indicated an asynchronous response by returning true, but the message channel closed before a response was received", source: chrome-extension://mpbelhhnfhfjnaehkcnnaknldmnocglk/tidy_devtools.html (0)
 12월 30, 2022 16:25:15.09 [12140:17332:1230/162515.087:ERROR:CONSOLE(0)] "Uncaught (in promise) Error: A listener indicated an asynchronous response by returning true, but the message channel closed before a response was received", source: chrome-extension://mpbelhhnfhfjnaehkcnnaknldmnocglk/tidy_devtools.html (0)
 12월 30, 2022 16:25:15.09 [12140:17332:1230/162515.087:ERROR:CONSOLE(0)] "Uncaught (in promise) Error: A listener indicated an asynchronous response by returning true, but the message channel closed before a response was received", source: chrome-extension://mpbelhhnfhfjnaehkcnnaknldmnocglk/tidy_devtools.html (0)
+
+1월 05, 2023 11:23:37.04 NEW SESSION
+1월 05, 2023 11:23:37.04 [9972:4672:0105/112337.046:ERROR:device_event_log_impl.cc(215)] [11:23:37.046] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
+1월 05, 2023 11:24:34.12 [9972:17072:0105/112434.125:ERROR:util.cc(133)] Can't create base directory: C:\Program Files\Google\GoogleUpdater
+1월 05, 2023 11:28:49.39 [9228:2296:0105/112849.398:ERROR:device_event_log_impl.cc(215)] [11:28:49.397] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
+1월 05, 2023 11:29:47.34 [9228:7664:0105/112947.345:ERROR:util.cc(133)] Can't create base directory: C:\Program Files\Google\GoogleUpdater
+1월 05, 2023 11:45:18.87 [9228:2296:0105/114518.877:ERROR:interface_endpoint_client.cc(694)] Message 0 rejected by interface blink.mojom.WidgetHost

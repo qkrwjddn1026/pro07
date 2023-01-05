@@ -13,38 +13,49 @@
 <title>Board Detail</title>
 </head>
 <body>
-	<section class="container">
-		<form action="${ path1}/board/update" method="post">
-			<div class="detail">
-				<div class="group">
-					<label for="no">no</label>
-					<input type="text" id="no" name="no" class="control" value="${board.no }" readonly required>
+	<div class="content" id="content">
+	    <div class="row column text-center">
+	      <h2 class="h1">공지사항 상세 보기</h2>
+	      <hr>
+	      <div class="container">
+		      <table id="table1">
+		      	<tbody>
+		
+		      		<tr>
+		      			<th style="background-color:#dcdcdc">글 번호</th>
+		      			<td>${board.no}</td>
+		      		</tr>	
+		      		<tr>
+		      			<th style="background-color:#dcdcdc">글 제목</th>
+		      			<td>${board.title }</td>
+		      		</tr>
+		      		<tr>
+		      			<th style="background-color:#dcdcdc">글 내용</th>
+		      			<td><p>${board.content }</p></td>
+		      		</tr>
+		      		<tr>
+		      			<th style="background-color:#dcdcdc">작성자</th>
+		      			<td>${board.author}</td>
+		      		</tr>
+		      		<tr>
+		      			<th style="background-color:#dcdcdc">작성일시</th>
+		      			<td>${board.regdate }</td>
+		      		</tr>
+		      		<tr>
+		      			<th style="background-color:#dcdcdc">읽은 횟수</th>
+		      			<td>${board.visited }</td>
+		      		</tr>
+		      	</tbody>
+		      </table>
+				<div class="button-group">
+				  <a class="button" href="${path1 }/board/list">글 목록</a>
+				  <c:if test='${sid eq "admin"}'>
+				  <a class="button" href="${path1 }/board/delete?no=${board.no}">글 삭제</a>
+				  <a class="button" href="${path1 }/board/updateForm?no=${board.no}">글 수정</a>
+				  </c:if>
 				</div>
-				<div class="group">
-					<label for="title">title</label>
-					<input type="text" id="title" name="title" class="control" value="${board.title }" readonly required>
-				</div>
-				<div class="group">
-					<label for="content">content</label>
-					<input type="text" id="content" name="content" class="control" value="${board.content }"readonly required>
-				</div>
-				<div class="group">
-					<label for="author">author</label>
-					<input type="text" id="author" name="author" class="control" value="${board.author }" required readonly>
-				</div>
-				<div class="group">
-					<label for="regdate">regdate</label>
-					<input type="text" id="regdate" name="regdate" class="control" value="${board.regdate }" required readonly>
-				</div>
-				<div class="group">
-					<label for="visited">visited</label>
-					<input type="text" id="visited" name="visited" class="control" value="${board.visited }" required readonly>
-				</div>
-			</div>
-			 <a class="button" href="${path1 }/board/delete?no=${board.no}">글 삭제</a>
-			 <a class="button" href="${path1 }/board/updateForm?no=${board.no}">글 수정</a>
-			 <a class="button" href="${path1 }/board/list">글 목록</a>
-		</form>
-	</section>
+	      </div>
+	    </div>
+	</div>
 </body>
 </html>

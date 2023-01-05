@@ -15,6 +15,9 @@
 	<title>공지사항 목록</title>
     <!-- 헤드 부분 인클루드 -->
     <jsp:include page="../include/head.jsp"></jsp:include>
+    <style>
+    .content{width:1296px; margin-left:auto; margin-right:auto;}
+    </style>
 </head>
 <body>
 	<header id="header">
@@ -25,21 +28,25 @@
 	      
 	      <hr>
 	      <div class="container">
-	      <c:if test="${empty sid }">
-		      <table id="tb" >
+		      <table id="tb">
 		      	<thead>
 		      		<tr>
-		      			<th width="80">No</th>
-		      			<th>Title</th>
-		      			<th width="120">RegDate</th>
-		      			<th width="100">Visited</th>
+		      			<th width="80">글 번호</th>
+		      			<th>제목</th>
+		      			<th width="120">작성일</th>
+		      			<th width="100">조회수</th>
 		      		</tr>
 		      	</thead>
 		      	<tbody>
 		      	<c:forEach items="${boardList }" var="board" varStatus="status">
 		      		<tr>
 		      			<td>${status.count }</td>
-		      			<td><a href="">${board.title }</a></td>
+		      			<c:if test="${empty sid }">
+							<td><a href="${path1 }/member/loginForm" class="not-member">${board.title }</a></td>
+						</c:if>
+						<c:if test="${not empty sid }">
+							<td><a href="${path1 }/board/detail?no=${board.no }">${board.title }</a></td>
+						</c:if>
 		      			<td>
 	      					<fmt:parseDate value="${board.regdate }" var="resdate" pattern="yyyy-MM-dd HH:mm:ss" />
 	      					<fmt:formatDate value="${resdate }" pattern="yyyy-MM-dd" />
@@ -49,47 +56,20 @@
 		      	</c:forEach>	
 		      	</tbody>
 		      </table>
-		      </c:if>
-		      
-		      <!--  -->
-		      <c:if test="${not empty sid }">
-		      <table>
-		      	<thead>
-		      		<tr>
-		      			<th width="80">No</th>
-		      			<th>Title</th>
-		      			<th width="120">RegDate</th>
-		      			<th width="100">Visited</th>
-		      		</tr>
-		      	</thead>
-		      	<tbody>
-		      	<c:forEach items="${boardList }" var="board" varStatus="status">
-		      		<tr>
-		      			<td>${status.count }</td>
-		      			<td><a href="${path1 }/board/detail?no=${board.no }">${board.title }</a></td>
-		      			<td>
-	      					<fmt:parseDate value="${board.regdate }" var="resdate" pattern="yyyy-MM-dd HH:mm:ss" />
-	      					<fmt:formatDate value="${resdate }" pattern="yyyy-MM-dd" />
-		      			</td>
-		      			<td>${board.visited }</td>
-		      		</tr>
-		      	</c:forEach>	
-		      	</tbody>
-		      </table>		
-		      </c:if>      
-			      	    <%-- <c:if test='${sid eq "admin"}'>  --%>
+		            
+			 <c:if test='${sid eq "admin"}'>  
 		      	<div class="button-group">
-				  <a class="button" href="${path1 }/board/insertForm">글쓰기</a>
+					<a class="button" href="${path1 }/board/insertForm">글쓰기</a>
 				</div>
-			<%-- </c:if> --%>
+			</c:if> 
 	      </div>
 
 	    </div>
 	</div>
 	<script>
 	$(document).ready(function(){
-		$("#tb").click(function(){
-			alert("로그인하고봐라");
+		$(".not-member").click(function(){
+			alert("로그인 후 조회가 가능합니다.");
 		});
 	});
 	</script>

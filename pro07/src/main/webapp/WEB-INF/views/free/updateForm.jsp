@@ -19,6 +19,7 @@
 				
 				<div class="group">
 					<label for="title">title</label>
+					<input type="hidden" id="no" name="no" class="control" value="${free.no }">
 					<input type="text" id="title" name="title" class="control" value="${free.title }" required>
 				</div>
 				<div class="group">

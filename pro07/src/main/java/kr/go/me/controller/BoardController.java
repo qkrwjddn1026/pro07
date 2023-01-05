@@ -53,7 +53,7 @@ public class BoardController {
 	@PostMapping("update")
 	public String updateBoard(BoardDTO board, Model model) throws Exception{
 		boardService.updateBoard(board);
-		return "redirect:/";
+		return "redirect:/board/list";
 	}
 	
 	@GetMapping("insertForm")
