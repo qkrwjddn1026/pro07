@@ -1,0 +1,29 @@
+package kr.go.me.controller;
+
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+
+import kr.go.me.service.QnaService;
+
+@Controller
+@RequestMapping("/qna/*")
+public class QnaController {
+	
+	@Autowired
+	QnaService qnaService;
+	
+	@Autowired
+	HttpSession session;
+	
+	@GetMapping("list")
+	public String qnaList(Model model) throws Exception{
+		;
+		return "qna/list";
+	}
+}

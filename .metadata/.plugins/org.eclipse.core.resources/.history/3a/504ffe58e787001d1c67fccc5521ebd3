@@ -1,6 +1,0 @@
-package kr.go.me.model;
-
-public class BoardDAOImpl implements BoardDAO{
-	
-
-}
