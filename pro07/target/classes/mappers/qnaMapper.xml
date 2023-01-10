@@ -14,7 +14,7 @@
 	
 	<!-- 질문 작성 -->
 	<insert id="qWrite">
-		insert into qna(title, content, author, lev, sec) values (#{title},#{content},#{author},#{lev},#{sec})
+		insert into qna(title, content, author, lev, sec) values (#{title},#{content},#{author},#{lev},'N')
 	</insert>
 	
 	<!-- 답변 작성 -->

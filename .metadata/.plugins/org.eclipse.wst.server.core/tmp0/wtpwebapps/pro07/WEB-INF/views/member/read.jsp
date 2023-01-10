@@ -59,6 +59,8 @@
 								<th><label for="" onclick="findAddr()">주소</label></th>
 								<td>
 									<input type="text" name="addr1" id="addr1" class="single100" value="${member.addr }"><br>
+									<input type="text" name="addr2" id="addr2" class="single100" value="${member.addr2 }"><br>
+									<input type="text" name="postcode" id="postcode" class="1" value="${member.postcode }">
 									<input type="button" value="주소찾기" onclick="findAddr()" class="btn btn-primary">
 								</td>
 							</tr>

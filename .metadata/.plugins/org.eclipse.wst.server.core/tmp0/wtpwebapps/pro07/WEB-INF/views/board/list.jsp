@@ -15,9 +15,7 @@
 	<title>공지사항 목록</title>
     <!-- 헤드 부분 인클루드 -->
     <jsp:include page="../include/head.jsp"></jsp:include>
-    <style>
-    .content{width:1296px; margin-left:auto; margin-right:auto;}
-    </style>
+    
 </head>
 <body>
 	<header id="header">

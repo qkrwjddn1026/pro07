@@ -90,12 +90,12 @@
 	        
 	        <li class="nav-item dropdown">
 	          <a class="nav-link dropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-	            Dropdown link
+	            	게시판
 	          </a>
 	          <ul class="dropdown-menu">
-	            <li><a class="dropdown-item" href="#">Action</a></li>
-	            <li><a class="dropdown-item" href="#">Another action</a></li>
-	            <li><a class="dropdown-item" href="#">Something else here</a></li>
+	            <li><a class="dropdown-item" href="${path1 }/board/list">공지사항</a></li>
+	            <li><a class="dropdown-item" href="${path1 }/free/list">자유게시판</a></li>
+	            <li><a class="dropdown-item" href="${path1 }/qna/list">QNA</a></li>
 	          </ul>
 	        </li>
 	      </ul>

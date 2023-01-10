@@ -7,6 +7,7 @@ insert into sample values('pjw2', '1234');
 insert into sample values('pjw3', '1234');
 commit;	
 drop table member;
+desc member;
 create table member(
 id varchar(50) primary key,
 pw varchar(500) not null,
@@ -18,6 +19,8 @@ select * from member;
 insert into member values ('pjw','1234','박정우','01012345678','김포',default);
 insert into member values ('pjw','1234','박정우','01012345678','김포',default);
 delete from member where id='admin';
+alter table member add addr2 varchar(100);
+alter table member add postcode varchar(30);
 
 create table board (
 no int not null auto_increment primary key,

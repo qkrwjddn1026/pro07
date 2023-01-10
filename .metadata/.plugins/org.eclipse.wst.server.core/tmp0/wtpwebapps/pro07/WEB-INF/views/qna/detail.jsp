@@ -75,9 +75,9 @@
 			<c:if test='${sid eq "admin" }'>
 				<c:set var="lev" value="${qna.lev }"/>
 				<c:if test="${qna.lev eq 0 }">
-					<a href='${path1} qna/awrite?no=${qna.no }' class="button is-primary">답변 하기</a>
-					<a href='${path1} qna/update?no=${qna.no }' class="button is-info">글 수정</a>
-					<a href='${path1} qna/delete?parno=${qna.no }' class="button is-danger">글 삭제</a>
+					<a href="../qna/aForm?lev=1&&parno=${qna.parno}" class="button is-primary">답변 하기</a>
+					<a href='${path1}/ qna/update?no=${qna.no }' class="button is-info">글 수정</a>
+					<a href='${path1}/ qna/delete?parno=${qna.no }' class="button is-danger">글 삭제</a>
 				</c:if>	
 				<c:if test="${qna.lev eq 1 }">
 					<a href='${path1}qna/update?no=${qna.no }' class="button is-info">답글 수정</a>

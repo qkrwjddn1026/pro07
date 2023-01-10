@@ -7,227 +7,164 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<title>회원가입</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>회원가입</title>
+	<!-- 헤드 부분 인클루드 -->
+    <jsp:include page="../include/head.jsp"></jsp:include>
+    <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 </head>
 <body>
-<div class="container">
-	<div data-role="content" class="ui-content">
-       <form name="frm1" id="frm1" action="${path1 }/member/insert.do" method="post" >
-            <div class="field">
-                <label class="label">아이디</label>
-                <div class="control">
-                    <input class="input" type="text" placeholder="아이디를 입력하세요" name="id" id="id">
-                   
-                </div>
-            </div>
-            <div class="field">
-                <label class="label">비밀번호</label>
-                <div class="control">
-                    <input class="input" type="password" placeholder="비밀번호를 입력하세요" name="pw" id="pw">
-                </div>
-            </div>
-           
-               <div class="field">
-                <label class="label">이름</label>
-                <div class="control">
-                    <input class="input" type="text" placeholder="이름" name="name" id="name">
-                </div>
-            </div>
-            <div class="field">
-                <label class="label">전화번호</label>
-                <div class="control">
-                    <input class="input" type="text" placeholder="전화번호를 입력하세요" name="tel" id="tel">
-                </div>
-            </div>
-            <div class="field">
-                <label class="label">주소</label>
-                <div class="control">
-                    <input class="input" type="text" name="addr" id="addr" placeholder="기본주소 입력" maxlength="150" required><br><br>
-                </div>
-            </div>
-            <div class="buttons">
-                <button type="submit" class="button is-primary is-light">가입</button>
-                <button type="reset" class="button is-link is-light">취소</button>
-            </div>
-            
-            <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-        </form>
-    </div>
-    </div>
+	<header id="header">
+		<!-- 헤더 부분 인클루드 -->
+	 	<jsp:include page="../include/header.jsp"></jsp:include>
+    </header>
+	
+	<div class="content" id="con">
+	    <div class="row column text-center">
+	      <h2 class="h1">회원가입</h2>
+	      <hr>
+	      <div class="container">
+	      	<form name="frm1" id="frm1" action="${path1 }/member/insert.do" method="post" onsubmit="return joinCheck(this)">
+			      <table id="table1">
+			      	<tbody>
+			      		<tr>
+			      			<th style="background-color:#dcdcdc">아이디</th>
+			      			<td>
+			      				<input type="text" name="id" id="id" placeholder="아이디 입력" pattern="^[a-z0-9]{3,12}" maxlength="12" required style="width:700px; float:left;">
+			      				<input type="button" id="idCkBtn" class="button" value="아이디 중복 체크" onclick="idCheck()">
+			      				<input type="hidden" name="idck" id="idck" value="no"/>
+							<c:if test="${empty sid }">
+								<p id="msg" style="padding-left:0.5rem"></p>
+							</c:if>
+							<c:if test="${not empty sid }">
+								<p id="msg" style="padding-left:0.5rem"></p>
+							</c:if>
+			      			</td>
+			      		</tr>
+			      		<tr>
+			      			<th style="background-color:#dcdcdc">비밀번호</th>
+			      			<td>
+			      				<input type="password" name="pw" id="pw" placeholder="비밀번호 입력" maxlength="12" required>
+			      				<!-- pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,12}$"  -->
+			      			</td>
+			      		</tr>
+			      		<tr>
+			      			<th style="background-color:#dcdcdc">비밀번호 확인</th>
+			      			<td>
+			      				<input type="password" name="pw2" id="pw2" placeholder="비밀번호 확인 입력" maxlength="12" required>
+			      				<!-- pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,12}$"  -->
+			      			</td>
+			      		</tr>
+			      		<tr>
+			      			<th style="background-color:#dcdcdc">이름</th>
+			      			<td>
+			      				<input type="text" name="name" id="name" placeholder="이름 입력" maxlength="40" required>
+			      			</td>
+			      		</tr>
+			      		<tr>
+			      			<th style="background-color:#dcdcdc">전화번호</th>
+			      			<td>
+			      				<input type="tel" name="tel" id="tel" placeholder="전화번호 입력" pattern="[0-9]{2,3}-[0-9]{3,4}-[0-9]{3,4}" maxlength="19" required>
+			      			</td>
+			      		</tr>
+		      			<tr>
+			      			<th style="background-color:#dcdcdc">주소</th>
+			      			<td>
+			      				<input type="text" name="addr" id="addr" placeholder="기본주소 입력" maxlength="150" required><br><br>
+			      				<input type="text" name="addr2" id="addr2" placeholder="상세주소 입력" maxlength="90" required><br><br>
+			      				<input type="text" name="postcode" id="postcode" placeholder="우편번호 입력" maxlength="9" required>
+			      				<input type="button" id="isAddrBtn" class="button" value="주소 입력" onclick="findAddr()">
+			      				<input type="hidden" name="addrck" id="addrck" value="no"/>
+			      			</td>
+			      		</tr>
+			      		<tr>
+			      			<td colspan="2">
+			      				<input type="submit" class="submit success button" value="회원 가입" >
+								<input type="reset" class="reset button" value="취소" >
+			      			</td>
+			      		</tr>
+			      	</tbody>
+			      </table>
+			   </form>   
+			   	<script>
+				$(document).ready(function(){
+					$("#id").keyup(function(){
+						$("#idck").val("no");
+						if($(this).val()!=""){
+							$("#msg").html("<strong>아이디 입력중입니다.</strong>");
+						} else {
+							$("#msg").html("중복체크하세요.");
+						}
+					});
+				});
+				</script>
+				<script>
+				function idCheck(){
+					if($("#id").val()==""){
+						alert("아이디를 입력하지 않으셨습니다.");
+						$("#id").focus();
+						return;
+					} 
+					var params = {	id : $("#id").val()	} //전송되어질 데이터를 객체로 묶음
+					$.ajax({
+						url:"${path1 }/member/idCheck",	//아이디가 전송되어질 곳
+						type:"post",		//전송방식
+						dataType:"json",	//데이터 반환 방식
+						data:params,		//전송방식이 post인 경우 객체로 묶어서 전송
+						success:function(result){
+							console.log(result.result);
+							var idChk = result.result;	//true 또는 false를 받음
+							if(idChk==false){	//사용할 수 없는 아이디
+								$("#idck").val("no");
+								$("#msg").html("<strong style='color:red'>사용중인 아이디 입니다. 다시 입력하시기 바랍니다.</strong>");
+								$("#id").focus();
+							} else if(idChk==true){	//사용 가능한 아이디
+								$("#idck").val("yes");
+								$("#msg").html("<strong style='color:blue'>사용가능한 아이디 입니다.</strong>");
+							} else if(idck==""){
+								$("#msg").html("<strong>아이디가 확인되지 않았습니다. 다시 시도해주시기 바랍니다.</strong>");
+							}
+						}
+					});
+				}
+				function joinCheck(f){
+					if(f.pw.value!=f.pw2.value){
+						alert("비밀번호와 비밀번호 확인이 서로 다릅니다.");
+						f.pw.focus();
+						return false;
+					}
+					if(f.idck.value!="yes"){
+						alert("아이디 중복 체크를 하지 않으셨습니다.");
+						return false;
+					}
+				}
+				</script>
+				<script>
+				function findAddr() {
+					new daum.Postcode({
+						oncomplete: function(data) {
+							console.log(data);
+							var roadAddr = data.roadAddress;
+							var jibunAddr = data.jibunAddress;
+							document.getElementById("postcode").value = data.zonecode;
+							if(roadAddr !== '') {
+								document.getElementById("addr").value = roadAddr;				
+							} else if(jibunAddr !== ''){
+								document.getElementById("addr").value = jibunAddr;
+							}
+							document.getElementById("addr2").focus();
+						}
+					}).open();
+				}
+				</script>
+				<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	      </div>
+	    </div>
+	</div>
+    <footer>
+    	<h2>footer</h2>
+    </footer>
 </body>
 </html>
-<div class="container">
-      <div class="py-5 text-center">
-        <img class="d-block mx-auto mb-4" src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
-        <h2>Checkout form</h2>
-        <p class="lead">Below is an example form built entirely with Bootstrap's form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>
-      </div>
-
-      <div class="row">
-        <div class="col-md-4 order-md-2 mb-4">
-          <h4 class="d-flex justify-content-between align-items-center mb-3">
-            <span class="text-muted">Your cart</span>
-            <span class="badge badge-secondary badge-pill">3</span>
-          </h4>
-       
-        </div>
-        <div class="col-md-8 order-md-1">
-          <h4 class="mb-3">회원가입</h4>
-          <form name="frm1" id="frm1" action="${path1 }/member/insert.do" method="post" >
-            <div class="row">
-              <div class="col-md-6 mb-3">
-               <label class="label">아이디</label>
-                <div class="control">
-                    <input class="input" type="text" placeholder="아이디를 입력하세요" name="id" id="id">
-                   
-                </div>
-              </div>
-               <div class="field">
-                <label class="label">이름</label>
-                <div class="control">
-                    <input class="input" type="text" placeholder="이름" name="name" id="name">
-                </div>
-            </div>
-            </div>
-
-            <div class="mb-3">
-              <label for="username">Username</label>
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">@</span>
-                </div>
-                <input type="text" class="form-control" id="username" placeholder="Username" required="">
-                <div class="invalid-feedback" style="width: 100%;">
-                  Your username is required.
-                </div>
-              </div>
-            </div>
-
-            <div class="mb-3">
-              <label for="email">Email <span class="text-muted">(Optional)</span></label>
-              <input type="email" class="form-control" id="email" placeholder="you@example.com">
-              <div class="invalid-feedback">
-                Please enter a valid email address for shipping updates.
-              </div>
-            </div>
-
-            <div class="mb-3">
-              <label for="address">Address</label>
-              <input type="text" class="form-control" id="address" placeholder="1234 Main St" required="">
-              <div class="invalid-feedback">
-                Please enter your shipping address.
-              </div>
-            </div>
-
-            <div class="mb-3">
-              <label for="address2">Address 2 <span class="text-muted">(Optional)</span></label>
-              <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
-            </div>
-
-            <div class="row">
-              <div class="col-md-5 mb-3">
-                <label for="country">Country</label>
-                <select class="custom-select d-block w-100" id="country" required="">
-                  <option value="">Choose...</option>
-                  <option>United States</option>
-                </select>
-                <div class="invalid-feedback">
-                  Please select a valid country.
-                </div>
-              </div>
-              <div class="col-md-4 mb-3">
-                <label for="state">State</label>
-                <select class="custom-select d-block w-100" id="state" required="">
-                  <option value="">Choose...</option>
-                  <option>California</option>
-                </select>
-                <div class="invalid-feedback">
-                  Please provide a valid state.
-                </div>
-              </div>
-              <div class="col-md-3 mb-3">
-                <label for="zip">Zip</label>
-                <input type="text" class="form-control" id="zip" placeholder="" required="">
-                <div class="invalid-feedback">
-                  Zip code required.
-                </div>
-              </div>
-            </div>
-            <hr class="mb-4">
-            <div class="custom-control custom-checkbox">
-              <input type="checkbox" class="custom-control-input" id="same-address">
-              <label class="custom-control-label" for="same-address">Shipping address is the same as my billing address</label>
-            </div>
-            <div class="custom-control custom-checkbox">
-              <input type="checkbox" class="custom-control-input" id="save-info">
-              <label class="custom-control-label" for="save-info">Save this information for next time</label>
-            </div>
-            <hr class="mb-4">
-
-            <h4 class="mb-3">Payment</h4>
-
-            <div class="d-block my-3">
-              <div class="custom-control custom-radio">
-                <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked="" required="">
-                <label class="custom-control-label" for="credit">Credit card</label>
-              </div>
-              <div class="custom-control custom-radio">
-                <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required="">
-                <label class="custom-control-label" for="debit">Debit card</label>
-              </div>
-              <div class="custom-control custom-radio">
-                <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required="">
-                <label class="custom-control-label" for="paypal">Paypal</label>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-6 mb-3">
-                <label for="cc-name">Name on card</label>
-                <input type="text" class="form-control" id="cc-name" placeholder="" required="">
-                <small class="text-muted">Full name as displayed on card</small>
-                <div class="invalid-feedback">
-                  Name on card is required
-                </div>
-              </div>
-              <div class="col-md-6 mb-3">
-                <label for="cc-number">Credit card number</label>
-                <input type="text" class="form-control" id="cc-number" placeholder="" required="">
-                <div class="invalid-feedback">
-                  Credit card number is required
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-3 mb-3">
-                <label for="cc-expiration">Expiration</label>
-                <input type="text" class="form-control" id="cc-expiration" placeholder="" required="">
-                <div class="invalid-feedback">
-                  Expiration date required
-                </div>
-              </div>
-              <div class="col-md-3 mb-3">
-                <label for="cc-expiration">CVV</label>
-                <input type="text" class="form-control" id="cc-cvv" placeholder="" required="">
-                <div class="invalid-feedback">
-                  Security code required
-                </div>
-              </div>
-            </div>
-            <hr class="mb-4">
-            <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
-          </form>
-        </div>
-      </div>
-
-      <footer class="my-5 pt-5 text-muted text-center text-small">
-        <p class="mb-1">© 2017-2018 Company Name</p>
-        <ul class="list-inline">
-          <li class="list-inline-item"><a href="#">Privacy</a></li>
-          <li class="list-inline-item"><a href="#">Terms</a></li>
-          <li class="list-inline-item"><a href="#">Support</a></li>
-        </ul>
-      </footer>
-    </div>

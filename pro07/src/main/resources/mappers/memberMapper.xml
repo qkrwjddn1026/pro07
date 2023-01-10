@@ -28,12 +28,12 @@
 	
 	<!-- 회원 가입 -->
 	<insert id="memberInsert">
-		insert into member(id,pw,name,tel,addr,regdate) values (#{id}, #{pw}, #{name}, #{tel}, #{addr},default)
+		insert into member(id,pw,name,tel,addr,addr2,postcode,regdate) values (#{id}, #{pw}, #{name}, #{tel}, #{addr},#{addr2},#{postcode},default)
 	</insert>
 	
 	<!-- 회원 정보 변경  -->
 	<update id="memberUpdate">
-	update member set pw=#{pw }, name=#{name }, tel=#{tel }, addr=#{addr } where id = #{id }
+	update member set pw=#{pw }, name=#{name }, tel=#{tel }, addr=#{addr }, addr2=#{addr2}, postcode=#{postcode} where id = #{id }
 	</update>
 	
 	<!-- 회원 탈퇴 -->	

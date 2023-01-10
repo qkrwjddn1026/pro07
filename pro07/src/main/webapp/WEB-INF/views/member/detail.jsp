@@ -58,7 +58,9 @@
 							<tr>
 								<th><label for="" onclick="findAddr()">주소</label></th>
 								<td>
-									<input type="text" name="addr1" id="addr1" class="single100" value="${member.addr }"><br>
+									<input type="text" name="addr" id="addr1" class="single100" value="${member.addr }"><br>
+									<input type="text" name="addr2" id="addr2" class="1" value="${member.addr2 }"><br>
+									<input type="text" name="postcode" id="postcode" class="1" value="${member.postcode }">
 									<input type="button" value="주소찾기" onclick="findAddr()" class="btn btn-primary">
 								</td>
 							</tr>
@@ -98,9 +100,9 @@
 							var jibunAddr = data.jibunAddress;
 							document.getElementById("postcode").value = data.zonecode;
 							if(roadAddr !== '') {
-								document.getElementById("addr1").value = roadAddr;				
+								document.getElementById("addr").value = roadAddr;				
 							} else if(jibunAddr !== ''){
-								document.getElementById("addr1").value = jibunAddr;
+								document.getElementById("addr").value = jibunAddr;
 							}
 						}
 					}).open();

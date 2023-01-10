@@ -28,6 +28,7 @@ public class QnaController {
 	@GetMapping("list")
 	public String qnaList(Model model) throws Exception{
 		List<QnaDTO> qnaList = qnaService.qnaList();
+		
 		model.addAttribute("qnaList",qnaList);
 		return "qna/list";
 	}
@@ -54,7 +55,7 @@ public class QnaController {
 	
 	@GetMapping("qForm")
 	public String qForm(Model model) throws Exception{
-		return "qna/qWriteForm";
+		return "qna/qForm";
 	}
 	
 	@PostMapping("qWrite")
@@ -64,11 +65,15 @@ public class QnaController {
 	}
 	
 	@GetMapping("aForm")
-	public String aForm(Model model,@RequestParam int no) throws Exception{
-		QnaDTO qna = qnaService.qnaDetail(no);
-		model.addAttribute("qna",qna);
-		return "qna/aWriteForm";
+	public String aForm(Model model,@RequestParam("lev") int lev, @RequestParam("parno") int parno) throws Exception{
+		model.addAttribute("lev",lev);
+		model.addAttribute("parno",parno);
+		return "qna/aForm";
 	}
-	
+	@PostMapping("aWrite")
+	public String aWrite(Model model, QnaDTO qna) throws Exception{
+		qnaService.aWrite(qna);
+		return "redirect:/qna/list";
+	}
 	
 }

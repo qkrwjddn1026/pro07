@@ -89,7 +89,7 @@
 		</table>
 		<c:if test='${not empty sid}'>
 		<div class="btn-group">
-			<a href="${path1 }/qna/qWrite" class="button is-dark">글 등록</a>
+			<a href="${path1 }/qna/qForm" class="button is-dark">글 등록</a>
 		</div>
 		</c:if>
 		</div>	

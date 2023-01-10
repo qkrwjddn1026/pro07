@@ -78,7 +78,7 @@ public class MemberController {
 	}
 	
 	//회원 가입 - Ajax로 아이디 중복 체크 
-	@RequestMapping(value="idCheck.do", method=RequestMethod.POST)
+	@RequestMapping(value="idCheck", method=RequestMethod.POST)
 	public void idCheck(HttpServletResponse response, HttpServletRequest request, Model model) throws Exception {
 		String id = request.getParameter("id");
 		boolean result = false;

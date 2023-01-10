@@ -9,5 +9,7 @@ public class MemberDTO {
 	private String name;
 	private String tel;
 	private String addr;
+	private String addr2;
+	private String postcode;
 	private String regdate;
 }
