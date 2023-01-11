@@ -33,5 +33,6 @@
 			<button type="reset">취소</button>
 		</form>
 	</section>
+	<jsp:include page="../include/footer.jsp"></jsp:include>
 </body>
 </html>

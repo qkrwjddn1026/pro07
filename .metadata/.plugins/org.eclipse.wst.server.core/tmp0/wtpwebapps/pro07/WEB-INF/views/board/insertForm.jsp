@@ -11,8 +11,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 <title>Board Insert</title>
+<jsp:include page="../include/head.jsp"></jsp:include>
 </head>
 <body>
+<jsp:include page="../include/header.jsp"></jsp:include>
 	<section class="container">
 		<form action="${ path1}/board/insert" method="post">
 			<div class="detail">
@@ -30,5 +32,6 @@
 			<button type="reset">취소</button>
 		</form>
 	</section>
+	<jsp:include page="../include/footer.jsp"></jsp:include>
 </body>
 </html>

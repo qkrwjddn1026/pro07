@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri = "http://java.sun.com/jsp/jstl/functions"%>
-<c:set var="path2" value="${pageContext.request.contextPath }" />
+<c:set var="path1" value="${pageContext.request.contextPath }" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,20 +14,16 @@
 <jsp:include page="../include/head.jsp"></jsp:include>
 </head>
 <body>
-	<header id="header">
-		<h2>헤더</h2>
-    </header>
+	<jsp:include page="../include/header.jsp"></jsp:include>
 
-    <div class="row column text-center">
-      <h2 class="h1">회원 목록</h2>
-      <hr>
+    <div class="container">
       <table id="tb">
       	<thead>
       		<tr>
       			<th width="80">No</th>
       			<th width="100">ID</th>
       			<th width="100">NAME</th>
-      			<th>RegDate</th>
+      			<th width="200">RegDate</th>
       			
       		</tr>
       	</thead>
@@ -35,7 +31,7 @@
       	<c:forEach items="${memberList }" var="member" varStatus="status">
       		<tr>
       			<td>${status.count }</td>
-      			<td><a href="${path2 }/member/detail?id=${member.id }">${member.id }</a></td>
+      			<td><a href="${path1 }/member/detail?id=${member.id }">${member.id }</a></td>
       			<td>${member.name }</td>
       			<td>${member.regdate }</td>
       			
@@ -45,8 +41,6 @@
       </table>
     </div>
 	
-    <footer id="footer" class="footer-nav">
-    	<h2>푸터</h2>
-    </footer>
+    <jsp:include page="../include/footer.jsp"></jsp:include>
 </body>
 </html>

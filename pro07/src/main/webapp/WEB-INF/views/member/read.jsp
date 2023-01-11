@@ -11,11 +11,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>회원 정보 보기</title>
+	<jsp:include page="../include/head.jsp" />
 </head>
 <body>
-	<header id="header">
-		<h2>헤더</h2>
-    </header>
+	<jsp:include page="../include/header.jsp" />
 	
 	<div class="content" id="con">
 	    <div class="row column text-center">
@@ -60,7 +59,7 @@
 								<td>
 									<input type="text" name="addr1" id="addr1" class="single100" value="${member.addr }"><br>
 									<input type="text" name="addr2" id="addr2" class="single100" value="${member.addr2 }"><br>
-									<input type="text" name="postcode" id="postcode" class="1" value="${member.postcode }">
+									<input type="text" name="postcode" id="postcode" class="1" value="${member.postcode }"><br>
 									<input type="button" value="주소찾기" onclick="findAddr()" class="btn btn-primary">
 								</td>
 							</tr>
@@ -68,6 +67,7 @@
 							
 						</tbody>
 					</table>
+					<a href="${path1 }/member/detail?id=${member.id}">회원정보 변경</a>
 				</div>
 				</form>
 				<script>
@@ -83,8 +83,6 @@
 	      </div>
 	    </div>
 	</div>
-    <footer id="footer" class="footer-nav row expanded collapse">
-    	<h2>푸터</h2>
-    </footer>
+   <jsp:include page="../include/footer.jsp"></jsp:include>
 </body>
 </html>

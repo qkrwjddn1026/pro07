@@ -16,10 +16,15 @@
       <button type="button" class="btn btn-outline-secondary me-md-2"> <a href="${path1 }/member/loginForm.do">로그인</a></button>
 	  <button type="button" class="btn btn-outline-secondary"><a href="${path1 }/member/agree.do">회원가입</a></button>
 	  </c:if>
-	   <c:if test="${not empty sid }">
+	   <c:if test="${not empty sid && sid ne ('admin')}">
 	   <p>${member.name }님</p>
       <button type="button" class="btn btn-outline-secondary me-md-2"> <a href="${path1 }/member/logout.do">로그아웃</a></button>
 	  <button type="button" class="btn btn-outline-secondary"> <a href="${path1 }/member/read">회원정보</a></button>
+        </c:if>
+        <c:if test='${sid.equals("admin")}'>
+       <p>${member.name }님</p>
+      <button type="button" class="btn btn-outline-secondary me-md-2"> <a href="${path1 }/member/logout.do">로그아웃</a></button>
+	  <button type="button" class="btn btn-outline-secondary"> <a href="${path1 }/member/list">회원목록</a></button>
         </c:if>
       </div>
     </div>

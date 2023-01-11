@@ -11,14 +11,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
 <title>Board Detail</title>
+<jsp:include page="../include/head.jsp"></jsp:include>
 </head>
 <body>
+<jsp:include page="../include/header.jsp" />
 	<div class="content" id="content">
 	    <div class="row column text-center">
 	      <h2 class="h1">공지사항 상세 보기</h2>
 	      <hr>
 	      <div class="container">
-		      <table id="table1">
+		      <table id="tb">
 		      	<tbody>
 		
 		      		<tr>
@@ -57,5 +59,6 @@
 	      </div>
 	    </div>
 	</div>
+	<jsp:include page="../include/footer.jsp"></jsp:include>
 </body>
 </html>

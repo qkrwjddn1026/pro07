@@ -7,59 +7,33 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+	<meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-<title>Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 user-scalable=no">
+	<title>Login</title>
+	<jsp:include page="../include/head.jsp" />
 </head>
-<body>
-<div class="content" id="con">
-	    <div class="row column text-center">
-	      <h2 class="h1">로그인</h2>
-	      <hr>
-	      <div class="container">
-				<c:if test="${!empty msg }">
-				<script>
-				alert("로그인 실패");
-				document.loginForm.userid.focus();
-				</script>
-				</c:if>
-				<form action="${path1 }/member/signin.do" method="post" name="loginForm">
-					<div class="table_form_wrap">
-						<table class="table_form">
-							<tbody>
-								<tr>
-									<th><label for="id">아이디</label></th>
-									<td><input type="text" name="id" id="id" size="100" class="single100" placeholder="아이디 입력" required>
-									<!--  pattern="^[a-z0-9]+$"  -->
-									</td>
-								</tr>				
-								<tr>
-									<th><label for="pw">비밀번호</label></th>
-									<td><input type="password" name="pw" id="pw"  class="single100" placeholder="비밀번호 입력" required>
-									<!--  pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"  -->
-									</td>
-								</tr>
-								<tr>
-									<td colspan="2">
-										<input type="submit" class="button" value="로그인">
-										<input type="reset" class="button" value="취소">
-									</td>
-								</tr>	
-							</tbody>
-						</table>
-					</div>
-				</form>
-				<script>
-				function loginFaiure() {
-					alert("로그인 실패");
-				}
-				</script>
-	      </div>
-	    </div>
+<body class="text-center">
+	<div class="wrap">
+		<jsp:include page="../include/header.jsp" />
+		<!-- content -->
+		<div class="container content">
+		  <main class="form-signin w-50 h-100 m-auto">
+			  <form action="${path1 }/member/signin.do" method="post">
+			    <div class="form-floating">
+			      <input type="text" class="form-control" id="id" name="id" placeholder="아이디를 입력해주세요">
+			      <label for="id">아이디</label>
+			    </div><br>
+			    <div class="form-floating">
+			      <input type="password" class="form-control" id="pw" name="pw" placeholder="비밀번호를 입력해주세요" >
+			      <label for="pw">비밀번호</label>
+			    </div><br><br>
+			    <button class="w-100 btn btn-lg btn-primary" type="submit">로그인</button>
+			  </form><br>
+			  <a class="w-100 btn btn-lg btn-primary"  href="${path1 }/member/agree">회원가입</a>
+			</main>
+		</div>
+			<jsp:include page="../include/footer.jsp" />
 	</div>
-    <footer id="footer" class="footer-nav row expanded collapse">
-    	<h2>푸터</h2>
-    </footer>
 </body>
 </html>

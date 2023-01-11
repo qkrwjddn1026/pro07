@@ -46,5 +46,6 @@
 			 <a class="button" href="${path1 }/free/list">글 목록</a>
 		</form>
 	</section>
+	<jsp:include page="../include/footer.jsp"></jsp:include>
 </body>
 </html>

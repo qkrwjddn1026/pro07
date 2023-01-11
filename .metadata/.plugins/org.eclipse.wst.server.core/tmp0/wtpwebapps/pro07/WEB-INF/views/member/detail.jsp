@@ -11,25 +11,19 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>회원 정보 보기</title>
+	<jsp:include page="../include/head.jsp"></jsp:include>
 </head>
 <body>
-	<header id="header">
-		
-    </header>
+	<jsp:include page="../include/header.jsp"></jsp:include>
 	
 	<div class="content" id="con">
 	    <div class="row column text-center">
 	      <div class="container">
-	      	<c:if test="${sid=='admin' }">
 			<h2 class="page_tit">회원 정보 수정</h2>
-			</c:if>
-			<c:if test="${sid!='admin' }">
-			<h2 class="page_tit">마이 페이지</h2>
-			</c:if>
 	      	<hr>
 				<form action="${path1 }/member/update.do" method="post" onsubmit="return updateCheck(this)">
 				<div class="table_form_wrap">
-					<table class="table_form">
+					<table class="table_form" id="tb">
 						<tbody>
 							<tr>
 								<th><label for="userid">아이디</label></th>
@@ -60,7 +54,7 @@
 								<td>
 									<input type="text" name="addr" id="addr1" class="single100" value="${member.addr }"><br>
 									<input type="text" name="addr2" id="addr2" class="1" value="${member.addr2 }"><br>
-									<input type="text" name="postcode" id="postcode" class="1" value="${member.postcode }">
+									<input type="text" name="postcode" id="postcode" class="1" value="${member.postcode }"><br>
 									<input type="button" value="주소찾기" onclick="findAddr()" class="btn btn-primary">
 								</td>
 							</tr>
@@ -112,8 +106,6 @@
 	      </div>
 	    </div>
 	</div>
-    <footer id="footer" class="footer-nav row expanded collapse">
-    	
-    </footer>
+    <jsp:include page="../include/footer.jsp"></jsp:include>
 </body>
 </html>

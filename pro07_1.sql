@@ -68,3 +68,5 @@ INSERT INTO qna(title, content, author, lev, parno, sec) VALUES ('답변1','답�
 INSERT INTO qna(title, content, author, lev, parno, sec) VALUES ('답변2','답변2','admin',1,2,'Y');
 select * from qna order by parno desc, no asc, lev asc;
 select * from qna;
+INSERT INTO qna(title, content, author, lev, parno,sec) VALUES ('질문3','질문3','pjw',0,3,'N');
+delete from qna where no=5;
