@@ -160,3 +160,9 @@
 1월 05, 2023 11:28:49.39 [9228:2296:0105/112849.398:ERROR:device_event_log_impl.cc(215)] [11:28:49.397] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
 1월 05, 2023 11:29:47.34 [9228:7664:0105/112947.345:ERROR:util.cc(133)] Can't create base directory: C:\Program Files\Google\GoogleUpdater
 1월 05, 2023 11:45:18.87 [9228:2296:0105/114518.877:ERROR:interface_endpoint_client.cc(694)] Message 0 rejected by interface blink.mojom.WidgetHost
+
+1월 12, 2023 10:01:30.31 NEW SESSION
+1월 12, 2023 10:01:30.31 [14636:9372:0112/100130.310:ERROR:device_event_log_impl.cc(215)] [10:01:30.310] Bluetooth: bluetooth_adapter_winrt.cc:1074 Getting Default Adapter failed.
+1월 12, 2023 10:02:28.08 [14636:11160:0112/100228.088:ERROR:util.cc(133)] Can't create base directory: C:\Program Files\Google\GoogleUpdater
+1월 12, 2023 10:33:22.29 [14636:9372:0112/103322.291:ERROR:interface_endpoint_client.cc(694)] Message 0 rejected by interface blink.mojom.WidgetHost
+1월 12, 2023 10:34:22.97 [14636:9372:0112/103422.974:ERROR:interface_endpoint_client.cc(694)] Message 1 rejected by interface blink.mojom.WidgetHost
