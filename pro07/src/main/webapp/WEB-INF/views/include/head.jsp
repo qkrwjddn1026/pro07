@@ -79,7 +79,7 @@ a {
   border-radius: 10px;
 }
 
-.link-secondary img {width:160px;}
+.link-secondary img {width:113px;}
 
 .content{width:1296px; margin-left:auto; margin-right:auto;}
 </style>

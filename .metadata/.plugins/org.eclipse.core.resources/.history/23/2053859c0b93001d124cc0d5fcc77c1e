@@ -1,0 +1,27 @@
+package kr.go.me;
+
+import org.junit.Assert;
+import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import kr.go.me.dto.SampleDTO;
+import kr.go.me.model.SampleDAO;
+import lombok.extern.log4j.Log4j;
+
+@Log4j
+public class DAOTest {
+
+	@Autowired
+	SampleDAO sampleDao;
+	
+	@Test
+	public void test4() throws Exception{
+		SampleDTO sample = new SampleDTO();
+		sample.setId("pjw");
+		sample.setPw("1234");
+		Assert.assertNotNull(sample);
+		log.info(sample);
+		sampleDao.addSample(sample);
+	}
+
+}

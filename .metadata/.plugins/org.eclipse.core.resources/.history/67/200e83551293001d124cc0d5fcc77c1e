@@ -1,0 +1,29 @@
+package kr.go.me;
+
+import java.util.List;
+
+import org.junit.Assert;
+import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import kr.go.me.dto.SampleDTO;
+import kr.go.me.service.SampleService;
+import lombok.extern.log4j.Log4j;
+
+
+@Log4j
+public class ServiceTest {
+	
+	@Autowired
+	SampleService sampleService;
+	
+	@Test
+	public void test5()throws Exception {
+		List<SampleDTO> list = sampleService.sampleList();
+		Assert.assertNotNull(list);
+		for(SampleDTO sample : list) {
+			log.info(sample.toString());
+		}
+	}
+
+}

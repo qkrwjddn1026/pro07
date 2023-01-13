@@ -6,4 +6,5 @@ import lombok.Data;
 public class SampleDTO {
 	private String id;
 	private String pw;
+	
 }
