@@ -2,7 +2,7 @@ package kr.go.me.controller;
 
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,59 +18,73 @@ import kr.go.me.service.BoardService;
 @Controller
 @RequestMapping("/board/*")
 public class BoardController {
-	
+
 	@Autowired
 	BoardService boardService;
 	
-	@Autowired
-	HttpSession session;
-	
-	// 공지사항 목록
-	@GetMapping("list")
-	public String boardList(Model model) throws Exception{
+	// 목록
+	@GetMapping("list.do")
+	public String getBoardList(Model model) throws Exception {
 		List<BoardDTO> boardList = boardService.boardList();
-		model.addAttribute("boardList",boardList);
-		return "board/list";
+		model.addAttribute("boardList", boardList);
+		return "board/boardList";
+	} 
+	
+	//상세
+	@GetMapping("detail.do")
+	public String getBoardDetail(@RequestParam("seq") int seq, Model model) throws Exception{
+		BoardDTO dto = boardService.getBoardDetail(seq);
+		model.addAttribute("dto", dto);
+		return "board/boardDetail";
 	}
 	
-	// 공지사항 상세보기
-	@GetMapping("detail")
-	public String boardDetail(@RequestParam int no, Model model) throws Exception{
-		BoardDTO board = boardService.boardDetail(no);
-		model.addAttribute("board",board);
-		return "board/detail";
+	//삭제
+	@GetMapping("delete.do")
+	public String boardDelete(@RequestParam("seq") int seq, Model model) throws Exception{
+		boardService.boardDelete(seq);
+		
+		List<BoardDTO> boardList = boardService.boardList();
+		model.addAttribute("boardList", boardList);
+		return "board/boardList";
 	}
 	
-	// 공지사항 수정 폼
-	@GetMapping("updateForm")
-	public String updateForm(Model model,@RequestParam int no) throws Exception{
-		BoardDTO board = boardService.boardDetail(no);
-		model.addAttribute("board",board);
-		return "board/updateForm";
+	//작성 폼
+	@GetMapping("insert.do")
+	public String insertForm(HttpServletRequest request, Model model) throws Exception {
+		return "board/boardInsert";
+	}
+	//작성 기능
+	@PostMapping("insert.do")
+	public String boardInsert(HttpServletRequest request, Model model) throws Exception {
+		BoardDTO dto = new BoardDTO();
+		dto.setTitle(request.getParameter("title"));
+		dto.setContent(request.getParameter("content"));
+		boardService.boardInsert(dto);
+		
+		return "redirect:list.do";
 	}
 	
-	// 공지사항 수정
-	@PostMapping("update")
-	public String updateBoard(BoardDTO board, Model model) throws Exception{
-		boardService.updateBoard(board);
-		return "redirect:/board/list";
+	// 수정 폼
+	@GetMapping("edit.do")
+	public String editForm(HttpServletRequest request, Model model) throws Exception {
+		int seq = Integer.parseInt(request.getParameter("seq"));
+		BoardDTO dto = boardService.getBoardDetail(seq);
+		model.addAttribute("dto", dto);
+		return "board/boardEdit";
+	}
+	// 수정 기능
+	@PostMapping("edit.do")
+	public String boardEdit(HttpServletRequest request, Model model) throws Exception {
+		int seq = Integer.parseInt(request.getParameter("seq"));
+		
+		BoardDTO dto = new BoardDTO();
+		dto.setSeq(seq);
+		dto.setTitle(request.getParameter("title"));
+		dto.setContent(request.getParameter("content"));
+		boardService.boardEdit(dto);
+		
+		return "redirect:list.do";
 	}
 	
-	@GetMapping("insertForm")
-	public String insertForm(Model model) throws Exception{
-		return "board/insertForm";
-	}
-	
-	@PostMapping("insert")
-	public String insertBoard(BoardDTO dto, Model model) throws Exception{
-		boardService.insertBoard(dto);
-		return "redirect:/";
-	}
-	
-	@GetMapping("delete")
-	public String deleteBoard(@RequestParam int no, HttpSession session, Model model) throws Exception{
-		boardService.deleteBoard(no);
-		session.invalidate();
-		return "redirect:/";
-	}
+
 }

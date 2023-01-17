@@ -1,0 +1,42 @@
+package kr.go.me.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import kr.go.me.dto.BoardDTO;
+import kr.go.me.model.BoardDAO;
+@Service
+public class BoardServiceImpl implements BoardService{
+
+	@Autowired
+	BoardDAO boardDao;
+
+	@Override
+	public List<BoardDTO> boardList() throws Exception {
+		return boardDao.boardList();
+	}
+
+	@Override
+	public BoardDTO getBoardDetail(int seq) throws Exception {
+		return boardDao.getBoardDetail(seq);
+	}
+
+	@Override
+	public void boardDelete(int seq) throws Exception {
+		boardDao.boardDelete(seq);
+	}
+
+	@Override
+	public void boardInsert(BoardDTO boardDTO) throws Exception {
+		boardDao.boardInsert(boardDTO);
+	}
+
+	@Override
+	public void boardEdit(BoardDTO boardDTO) throws Exception {
+		boardDao.boardEdit(boardDTO);
+	}
+	
+	
+}

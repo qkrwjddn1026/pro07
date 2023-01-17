@@ -19,12 +19,12 @@
 	   <c:if test="${not empty sid && sid ne ('admin')}">
 	   <p>${member.name }님</p>
       <button type="button" class="btn btn-outline-secondary me-md-2"> <a href="${path1 }/member/logout.do">로그아웃</a></button>
-	  <button type="button" class="btn btn-outline-secondary"> <a href="${path1 }/member/read">회원정보</a></button>
+	  <button type="button" class="btn btn-outline-secondary"> <a href="${path1 }/member/read.do">회원정보</a></button>
         </c:if>
         <c:if test='${sid.equals("admin")}'>
        <p>${member.name }님</p>
       <button type="button" class="btn btn-outline-secondary me-md-2"> <a href="${path1 }/member/logout.do">로그아웃</a></button>
-	  <button type="button" class="btn btn-outline-secondary"> <a href="${path1 }/member/list">회원목록</a></button>
+	  <button type="button" class="btn btn-outline-secondary"> <a href="${path1 }/member/list.do">회원목록</a></button>
         </c:if>
       </div>
     </div>
@@ -98,9 +98,9 @@
 	            	게시판
 	          </a>
 	          <ul class="dropdown-menu">
-	            <li><a class="dropdown-item" href="${path1 }/board/list">공지사항</a></li>
-	            <li><a class="dropdown-item" href="${path1 }/free/list">자유게시판</a></li>
-	            <li><a class="dropdown-item" href="${path1 }/qna/list">QNA</a></li>
+	            <li><a class="dropdown-item" href="${path1 }/board/list.do">공지사항</a></li>
+	            <li><a class="dropdown-item" href="${path1 }/free/list.do">자유게시판</a></li>
+	            <li><a class="dropdown-item" href="${path1 }/qna/list.do">QNA</a></li>
 	          </ul>
 	        </li>
 	      </ul>

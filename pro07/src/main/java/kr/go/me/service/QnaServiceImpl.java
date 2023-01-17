@@ -14,34 +14,39 @@ public class QnaServiceImpl implements QnaService{
 	QnaDAO qnaDao;
 
 	@Override
-	public List<QnaDTO> qnaList() throws Exception {
-		return qnaDao.qnaList();
+	public List<QnaDTO> list() throws Exception {
+		return qnaDao.list();
 	}
 
 	@Override
-	public QnaDTO qnaDetail(int no) throws Exception {
-		return qnaDao.qnaDetail(no);
+	public QnaDTO detail(int no) throws Exception {
+		return qnaDao.detail(no);
 	}
 
 	@Override
-	public void qWrite(QnaDTO qna) throws Exception {
-		qnaDao.qWrite(qna);
+	public void qAdd(QnaDTO qnaDTO) throws Exception {
+		qnaDao.qAdd(qnaDTO);
 	}
 
 	@Override
-	public void aWrite(QnaDTO qna) throws Exception {
-		qnaDao.aWrite(qna);
+	public void aAdd(QnaDTO qnaDTO) throws Exception {
+		qnaDao.aAdd(qnaDTO);
 	}
 
 	@Override
-	public void qnaUpdate(QnaDTO qna) throws Exception {
-		qnaDao.qnaUpdate(qna);
+	public void del(int no) throws Exception {
+		qnaDao.del(no);
 	}
 
 	@Override
-	public void qnaDelete(int no) throws Exception {
-		qnaDao.qnaDelete(no);
+	public void edit(QnaDTO qnaDTO) throws Exception {
+		qnaDao.edit(qnaDTO);
 	}
-	
-	
+
+	@Override
+	public List<QnaDTO> atail(int parno) throws Exception {
+		return qnaDao.atail(parno);
+	}
+
+		
 }

@@ -13,43 +13,36 @@ public class BoardDAOImpl implements BoardDAO{
 
 	@Autowired
 	SqlSession sqlSession;
-	
+
 	// 공지사항 목록
 	@Override
 	public List<BoardDTO> boardList() throws Exception {
 		return sqlSession.selectList("board.boardList");
 	}
-
-	// 공지사항 상세보기
 	
+	// 공지사항 상세보기
 	@Override
-	public BoardDTO boardDetail(int no) throws Exception {
-		 sqlSession.update("board.visitedUp",no); 
-		return sqlSession.selectOne("board.boardDetail", no);
+	public BoardDTO getBoardDetail(int seq) throws Exception {
+		sqlSession.update("board.visitedUp",seq);
+		return sqlSession.selectOne("board.getBoardDetail",seq);
+	}
+	
+	// 공지사항 삭제
+	@Override
+	public void boardDelete(int seq) throws Exception {
+		sqlSession.delete("board.boardDelete",seq);
+	}
+
+	// 공지사항 글 작성
+	@Override
+	public void boardInsert(BoardDTO boardDTO) throws Exception {
+		sqlSession.insert("board.boardInsert", boardDTO);
 	}
 	
 	// 공지사항 수정
 	@Override
-	public void updateBoard(BoardDTO dto) throws Exception {
-			sqlSession.update("board.updateBoard",dto);
-		
+	public void boardEdit(BoardDTO boardDTO) throws Exception {
+		sqlSession.update("board.boardEdit", boardDTO);
 	}
-
-	// 공지사항 등록
-	@Override
-	public void insertBoard(BoardDTO dto) throws Exception {
-			sqlSession.insert("board.insertBoard",dto);
-		
-	}
-
-	// 공지사항 삭제
-	@Override
-	public void deleteBoard(int no) throws Exception {
-			sqlSession.delete("board.deleteBoard",no);
-		
-	}
-
 	
-	
-
 }

@@ -2,78 +2,108 @@ package kr.go.me.controller;
 
 import java.util.List;
 
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.go.me.dto.QnaDTO;
 import kr.go.me.service.QnaService;
 
 @Controller
-@RequestMapping("/qna/*")
+@RequestMapping("/qna/")
 public class QnaController {
-	
+
 	@Autowired
 	QnaService qnaService;
 	
-	@Autowired
-	HttpSession session;
+	@GetMapping("list.do")
+	public String qnaList(Model model) throws Exception {
+		List<QnaDTO> qnaList = qnaService.list();
+		model.addAttribute("qnaList", qnaList);
+		return "qna/qnaList";
+	}
 	
-	@GetMapping("list")
-	public String qnaList(Model model) throws Exception{
-		List<QnaDTO> qnaList = qnaService.qnaList();
+	@GetMapping("detail.do")
+	public String qnaDetail(@RequestParam("no") int no, Model model) throws Exception{
+		QnaDTO dto = qnaService.detail(no);
+		model.addAttribute("dto", dto);
+		return "qna/qnaDetail";
+	}
+	
+	@GetMapping("delete.do")
+	public String qnaDel(@RequestParam("no") int no, Model model) throws Exception {
+		qnaService.del(no);
 		
-		model.addAttribute("qnaList",qnaList);
-		return "qna/list";
+		List<QnaDTO> qnaList = qnaService.list();
+		model.addAttribute("qnaList", qnaList);
+		return "qna/qnaList";
 	}
 	
-	@GetMapping("detail")
-	public String qnaDetail(Model model,@RequestParam int no) throws Exception{
-		QnaDTO qna = qnaService.qnaDetail(no);
-		model.addAttribute("qna",qna);
-		return "qna/detail";
+	@GetMapping("edit.do")
+	public String qnaEditForm(@RequestParam("no") int no, Model model) throws Exception {
+		QnaDTO dto = qnaService.detail(no);
+		model.addAttribute("dto", dto);
+		return "qna/qnaEdit";
 	}
 	
-	@GetMapping("updateForm")
-	public String qnaUpdateForm(Model model,@RequestParam int no) throws Exception{
-		QnaDTO qna = qnaService.qnaDetail(no);
-		model.addAttribute("qna",qna);
-		return "qna/updateForm";
+	@PostMapping("edit.do")
+	public String qnaEdit(HttpServletRequest request, Model model) throws Exception {
+		int no = Integer.parseInt(request.getParameter("no"));
+		
+		QnaDTO qnaDTO = new QnaDTO();
+		qnaDTO.setNo(no);
+		qnaDTO.setTitle(request.getParameter("title"));
+		qnaDTO.setContent(request.getParameter("content"));
+		qnaService.edit(qnaDTO);
+		return "redirect:list.do";
+	}
+
+	@GetMapping("insert.do")
+	public String qnainsertForm(Model model) throws Exception {
+		return "qna/qnaAdd";
 	}
 	
-	@PostMapping("update")
-	public String qnaUpdate(Model model, QnaDTO qna) throws Exception{
-		qnaService.qnaUpdate(qna);
-		return "redirect:/qna/list";
+	@PostMapping("insert.do")
+	public String qnainsert(HttpServletRequest request, Model model) throws Exception {
+		
+		QnaDTO qnaDTO = new QnaDTO();
+		qnaDTO.setAuthor(request.getParameter("author"));
+		qnaDTO.setTitle(request.getParameter("title"));
+		qnaDTO.setContent(request.getParameter("content"));
+		qnaService.qAdd(qnaDTO);
+		return "redirect:list.do";
 	}
 	
-	@GetMapping("qForm")
-	public String qForm(Model model) throws Exception{
-		return "qna/qForm";
+	@GetMapping("wright.do")
+	public String qnaWrightForm(@RequestParam("no") int no,Model model) throws Exception {
+		model.addAttribute("no", no);
+		return "qna/qnaAdd2";
 	}
 	
-	@PostMapping("qWrite")
-	public String qWrite(Model model, QnaDTO qna) throws Exception{
-		qnaService.qWrite(qna);
-		return "redirect:/qna/list";
+	@PostMapping("wright.do")
+	public String qnaWright(HttpServletRequest request, @RequestParam("parno") int parno,Model model) throws Exception {
+		
+		QnaDTO qnaDTO = new QnaDTO();
+		qnaDTO.setAuthor(request.getParameter("author"));
+		qnaDTO.setTitle(request.getParameter("title"));
+		qnaDTO.setContent(request.getParameter("content"));
+		qnaDTO.setParno(parno);
+		qnaService.aAdd(qnaDTO);
+		return "redirect:list.do";
 	}
 	
-	@GetMapping("aForm")
-	public String aForm(Model model,@RequestParam("lev") int lev, @RequestParam("parno") int parno) throws Exception{
-		model.addAttribute("lev",lev);
-		model.addAttribute("parno",parno);
-		return "qna/aForm";
+	@GetMapping("atail.do")
+	@ResponseBody
+	public List<QnaDTO> atail(@RequestParam("parno") int parno, Model model) throws Exception{
+		List<QnaDTO> list = qnaService.atail(parno);
+		return list;
 	}
-	@PostMapping("aWrite")
-	public String aWrite(Model model, QnaDTO qna) throws Exception{
-		qnaService.aWrite(qna);
-		return "redirect:/qna/list";
-	}
-	
 }

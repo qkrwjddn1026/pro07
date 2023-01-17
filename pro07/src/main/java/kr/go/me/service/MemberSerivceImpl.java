@@ -17,13 +17,13 @@ import kr.go.me.model.MemberDAO;
 public class MemberSerivceImpl implements MemberService{
 	@Autowired
 	MemberDAO memberDao;
-
+	
 	@Inject
 	BCryptPasswordEncoder pwdEncoder;
 	
 	//회원목록
 	@Override
-	public List<MemberDTO> memberList() throws Exception {
+	public List<MemberDTO> membetList() throws Exception {
 		return memberDao.memberList();
 	}
 
@@ -41,8 +41,8 @@ public class MemberSerivceImpl implements MemberService{
 	
 	//컨트롤러에서 로그인 처리
 	@Override
-	public MemberDTO signIn(MemberDTO dto) throws Exception {
-		return memberDao.signIn(dto);
+	public MemberDTO signIn(MemberDTO mdto) throws Exception {
+		return memberDao.signIn(mdto);
 	}
 	
 	//서비스에서 로그인 처리
@@ -50,14 +50,14 @@ public class MemberSerivceImpl implements MemberService{
 	public boolean login(HttpServletRequest request) throws Exception {	
 		HttpSession session = request.getSession();
 		boolean loginSuccess = false;
-		MemberDTO dto = new MemberDTO();
+		MemberDTO mdto = new MemberDTO();
 		
-		dto.setId(request.getParameter("id"));
-		dto.setPw(request.getParameter("pw"));
+		mdto.setId(request.getParameter("id"));
+		mdto.setPw(request.getParameter("pw"));
 		
-		MemberDTO login = memberDao.login(dto);
+		MemberDTO login = memberDao.login(mdto);
 		
-		loginSuccess =  pwdEncoder.matches(dto.getPw(), login.getPw());
+		loginSuccess =  pwdEncoder.matches(mdto.getPw(), login.getPw());
 		if(login != null && loginSuccess==true) {
 			session.setAttribute("member", login);
 			session.setAttribute("sid", login.getId());
@@ -67,13 +67,13 @@ public class MemberSerivceImpl implements MemberService{
 	}
 	
 	@Override
-	public MemberDTO loginCheck(MemberDTO dto) throws Exception {
-		return memberDao.loginCheck(dto);
+	public MemberDTO loginCheck(MemberDTO mdto) throws Exception {
+		return memberDao.loginCheck(mdto);
 	}
 
 	@Override
-	public void memberUpdate(MemberDTO dto) throws Exception {
-		memberDao.memberUpdate(dto);
+	public void memberUpdate(MemberDTO mdto) throws Exception {
+		memberDao.memberUpdate(mdto);
 	}
 
 	@Override

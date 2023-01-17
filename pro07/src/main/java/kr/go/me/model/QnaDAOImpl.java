@@ -14,35 +14,39 @@ public class QnaDAOImpl implements QnaDAO{
 	SqlSession session;
 
 	@Override
-	public List<QnaDTO> qnaList() throws Exception {
-		return session.selectList("qna.qnaList");
+	public List<QnaDTO> list() throws Exception {
+		return session.selectList("qna.list");
 	}
 
 	@Override
-	public QnaDTO qnaDetail(int no) throws Exception {
-		return session.selectOne("qna.qnaDetail",no);
+	public QnaDTO detail(int no) throws Exception {
+		return session.selectOne("qna.detail",no);
 	}
 
 	@Override
-	public void qWrite(QnaDTO qna) throws Exception {
-		session.insert("qna.qWrite",qna);
+	public void qAdd(QnaDTO qnaDTO) throws Exception {
+		session.insert("qna.qAdd",qnaDTO);
 	}
 
 	@Override
-	public void aWrite(QnaDTO qna) throws Exception {
-		session.insert("qna.aWrite",qna);
+	public void aAdd(QnaDTO qnaDTO) throws Exception {
+		session.insert("qna.aAdd",qnaDTO);
 	}
 
 	@Override
-	public void qnaUpdate(QnaDTO qna) throws Exception {
-		session.update("qna.qnaUpdate",qna);
+	public void del(int no) throws Exception {
+		session.delete("qna.del",no);
 	}
 
 	@Override
-	public void qnaDelete(int no) throws Exception {
-		session.delete("qna.qnaDelete",no);
+	public void edit(QnaDTO qnaDTO) throws Exception {
+		session.update("qna.edit",qnaDTO);
 	}
+
+	@Override
+	public List<QnaDTO> atail(int parno) throws Exception {
+		return session.selectList("qna.atail",parno);
+	}
+
 	
-	
-
 }

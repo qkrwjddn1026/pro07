@@ -12,30 +12,36 @@ public class BoardServiceImpl implements BoardService{
 
 	@Autowired
 	BoardDAO boardDao;
-	
+
+	// 공지사항 목록
 	@Override
 	public List<BoardDTO> boardList() throws Exception {
 		return boardDao.boardList();
 	}
 
+	// 공지사항 상세보기
 	@Override
-	public BoardDTO boardDetail(int no) throws Exception {
-		return boardDao.boardDetail(no);
+	public BoardDTO getBoardDetail(int seq) throws Exception {
+		return boardDao.getBoardDetail(seq);
 	}
 
+	// 공지사항 삭제
 	@Override
-	public void updateBoard(BoardDTO dto) throws Exception {
-		boardDao.updateBoard(dto);
+	public void boardDelete(int seq) throws Exception {
+		boardDao.boardDelete(seq);
 	}
 
+	// 공지사항 글 작성
 	@Override
-	public void insertBoard(BoardDTO dto) throws Exception {
-		boardDao.insertBoard(dto);
+	public void boardInsert(BoardDTO boardDTO) throws Exception {
+		boardDao.boardInsert(boardDTO);
 	}
 
+	// 공지사항 수정
 	@Override
-	public void deleteBoard(int no) throws Exception {
-		boardDao.deleteBoard(no);
+	public void boardEdit(BoardDTO boardDTO) throws Exception {
+		boardDao.boardEdit(boardDTO);
 	}
+	
 	
 }
