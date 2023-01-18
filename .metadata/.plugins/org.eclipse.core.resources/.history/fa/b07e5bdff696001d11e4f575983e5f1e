@@ -1,0 +1,46 @@
+package kr.go.me.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import kr.go.me.dto.FreeDTO;
+import kr.go.me.model.FreeDAO;
+
+public class FreeServiceImpl implements FreeService{
+	
+	@Autowired
+	FreeDAO freeDao;
+	
+	@Override
+	public List<FreeDTO> freeList() throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public FreeDTO freeDetail(int bno) throws Exception {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void freeDelete(int bno) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void freeInsert(FreeDTO dto) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void freeEdit(FreeDTO dto) throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+	
+
+}

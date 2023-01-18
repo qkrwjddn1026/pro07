@@ -17,3 +17,7 @@ CREATE SEQUENCE seq_qna START WITH 1 INCREMENT BY 1;
 insert into qna(no,author, title, content) values (1,'pjw123','질문1','내용1');
 commit;
 select * from qna;
+select * from member;
+delete from member where name='관리자';
+
+select * from free;

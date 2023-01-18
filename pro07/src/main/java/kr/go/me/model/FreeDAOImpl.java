@@ -19,28 +19,25 @@ public class FreeDAOImpl implements FreeDAO{
 	}
 
 	@Override
-	public FreeDTO freeDetail(int no) throws Exception {
-		session.update("free.visitedUp",no);
-		return session.selectOne("free.freeDetail",no);
+	public FreeDTO freeDetail(int bno) throws Exception {
+		session.update("free.visitedCount",bno);
+		return session.selectOne("free.freeDetail",bno);
 	}
 
 	@Override
-	public void freeUpdate(FreeDTO free) throws Exception {
-		session.update("free.freeUpdate",free);
-		
+	public void freeDelete(int bno) throws Exception {
+		session.delete("free.freeDelete",bno);
 	}
 
 	@Override
 	public void freeInsert(FreeDTO dto) throws Exception {
 		session.insert("free.freeInsert",dto);
-		
 	}
 
 	@Override
-	public void freeDelete(int no) throws Exception {
-		session.delete("free.freeDelete",no);
-		
+	public void freeEdit(FreeDTO dto) throws Exception {
+		session.update("free.freeEdit",dto);
 	}
 	
-	
+
 }

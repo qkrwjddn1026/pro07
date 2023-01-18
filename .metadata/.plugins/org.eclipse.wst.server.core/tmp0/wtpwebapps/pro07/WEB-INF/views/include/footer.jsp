@@ -19,7 +19,7 @@
     
      <div class="log">
         <a class="link-secondary" href="${path1 }" ><img src="http://me.go.kr/images/home/main/2018/logo.png" alt="Logo"></a>
-        <p class="text-center text-muted" style="width: 1211px">(우)30103 세종특별자치시 도움6로 11 정부세종청사 6동 <br>민원실 : 1577-8866</p>
+        <p class="text-center text-muted" style="width: 1080px">(우)30103 세종특별자치시 도움6로 11 정부세종청사 6동 <br>민원실 : 1577-8866</p>
     <p class="text-center text-muted">- 본 누리집의 내용은 저작권법에 의해 보호를 받는 저작물로서, 이에 대한 무단 복제 및 배포를 원칙적으로 금하며 누리집에 게재된 이메일 주소의 수집을 거부합니다.<br>
 이를 위반 시 관련법에 의해 처벌됨을 알려드립니다.<br>
 - 누리집 저작권은 환경부에 있습니다.</p>

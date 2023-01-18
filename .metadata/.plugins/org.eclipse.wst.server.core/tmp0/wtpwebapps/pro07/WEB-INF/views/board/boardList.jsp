@@ -33,6 +33,7 @@
 			      <th><abbr title="title">제목</abbr></th>
 			      <th><abbr title="nickname">작성자</abbr></th>
 			      <th><abbr title="regdate">작성일</abbr></th>
+			      <th><abbr title="visited">조회수</abbr></th>
 			    </tr>
 			  </thead>
 			   <tbody>
@@ -43,7 +44,8 @@
 			      <td>${dto.nickname }</td>
 			      <td>
 			      	<fmt:parseDate value="${dto.regdate }" var="regdate" pattern="yyyy-MM-dd HH:mm:ss" />
-			      	<fmt:formatDate value="${regdate }" pattern="yyyy-MM-dd" />
+			      	<fmt:formatDate value="${regdate }" pattern="yyyy-MM-dd" /></td>
+			      	<td>${dto.visited }</td>
 			    </tr>
 			    </c:forEach>
 			  </tbody>

@@ -8,41 +8,45 @@
 		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-12|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="springframework"/>
+		<item key="selection" value=""/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="fseq"/>
+			<item value="&#x09;&#x09;// TODO Auto-generated method stub"/>
+			<item value="com.test"/>
+			<item value="kr.go.me"/>
+			<item value="com.test.dto"/>
+			<item value="board."/>
+			<item value="no"/>
+			<item value="com.test."/>
+			<item value="myb"/>
+			<item value="my"/>
+			<item value="oracle"/>
 			<item value="springframework"/>
 			<item value="mybatis"/>
 			<item value="mock"/>
 			<item value="junit"/>
-			<item value="logo"/>
-			<item value="l"/>
-			<item value="tns"/>
-			<item value="msg"/>
-			<item value="addr"/>
-			<item value="pid"/>
-			<item value="qid"/>
-			<item value="중복체크"/>
-			<item value="birth"/>
-			<item value="idck"/>
-			<item value="idc"/>
 		</list>
 		<list key="replacehistory">
+			<item value="bno"/>
+			<item value=""/>
+			<item value="kr.go.me"/>
+			<item value="kr.go.me.dto"/>
+			<item value="dto."/>
+			<item value="seq"/>
+			<item value="kr.go.me."/>
 			<item value="me"/>
 			<item value="qna"/>
 			<item value="eq "/>
 			<item value="eq"/>
 			<item value="no"/>
-			<item value=""/>
 			<item value="board"/>
 			<item value="free"/>
 			<item value="member"/>
-			<item value="dto"/>
-			<item value="kr.go.me.dto"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
