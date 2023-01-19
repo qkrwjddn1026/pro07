@@ -10,13 +10,43 @@
 <jsp:include page="include/head.jsp"></jsp:include>
 	<meta charset="UTF-8">
 	<title>Home</title>
-
+<style>
+.carousel-inner img{height: 750px;}
+</style>
 </head>
 <body>
 <header id="header">
 <jsp:include page="./include/header.jsp"></jsp:include>
 </header>
+
 <div class="container px-4 px-lg-5 nimg">
+	<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+	  <div class="carousel-indicators">
+	    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+	    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+	    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+	  </div>
+	  <div class="carousel-inner">
+	    <div class="carousel-item active">
+	      <img src="http://me.go.kr/upload/1/board/202301/18/20230118150709.png" class="d-block w-100" alt="...">
+	    </div>
+	    <div class="carousel-item">
+	      <img src="http://me.go.kr/upload/1/board/202301/18/20230118165843.png" class="d-block w-100" alt="...">
+	    </div>
+	    <div class="carousel-item">
+	      <img src="http://me.go.kr/upload/1/banner/202301/02/20230102172806.png" class="d-block w-100" alt="...">
+	    </div>
+	  </div>
+	  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+	    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+	    <span class="visually-hidden">Previous</span>
+	  </button>
+	  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+	    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+	    <span class="visually-hidden">Next</span>
+	  </button>
+	</div>
+
  <section class="slider-three">
     <div class="container">
     <div class="slider-items-wrapper">
@@ -82,7 +112,48 @@
          },
       });
    </script>
-</div>
+    <div class="row gx-4 gx-lg-5 align-items-center my-5 nimg">
+                <div class="col-lg-5"><img class="img-fluid rounded mb-4 mb-lg-0"
+                        src="resources/img/b1.png" alt="..." /></div>
+                <div class="col-lg-7">
+                    <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">공지사항</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td><a href="${path1 }/board/detail.do?seq=11">글 쓰기 기능1</a></td>
+                            <td>2022-11-25</td>
+                          </tr>
+                          <tr>
+                            <td><a href="${path1 }/board/detail.do?seq=10">테스트 제목11</a></td>
+                            <td>2022-11-23</td>
+                          </tr>
+                          <tr>
+                            <td><a href="${path1 }/board/detail.do?seq=9">테스트 제목10</a></td>
+                            <td>2022-11-23</td>
+                          </tr>
+                          <tr>
+                            <td><a href="${path1 }/board/detail.do?seq=8">테스트 제목9</a></td>
+                            <td>2022-11-23</td>
+                          </tr>
+                          <tr>
+                            <td><a href="${path1 }/board/detail.do?seq=7">테스트 제목8</a></td>
+                            <td>2022-11-23</td>
+                          </tr>
+                          <tr>
+                            <td><a href="${path1 }/board/detail.do?seq=6">테스트 제목7</a></td>
+                            <td>2022-11-23</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                </div>
+            </div>
+            <!-- Content Row-->
+        
+        </div>
 <jsp:include page="include/footer.jsp"></jsp:include>
 </body>
 </html>

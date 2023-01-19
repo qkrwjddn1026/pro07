@@ -4,6 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri = "http://java.sun.com/jsp/jstl/functions"%>
 <c:set var="path1" value="${pageContext.request.contextPath }" />
+
 <!-- 헤더 내용 기술 -->
 <div class="container">
   <header class="blog-header lh-1 py-3">
@@ -39,62 +40,62 @@
 	      <ul class="navbar-nav">
 	      <div class="hstack gap-5">
 	       <li class="nav-item dropdown">
-	          <a class="nav-link dropdown " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-	            Dropdown link
+	          <a class="nav-link dropdown " href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="margin-right:25px;">
+	            	기관소개
 	          </a>
 	          <ul class="dropdown-menu">
-	            <li><a class="dropdown-item" href="#">Action</a></li>
-	            <li><a class="dropdown-item" href="#">Another action</a></li>
-	            <li><a class="dropdown-item" href="#">Something else here</a></li>
+	            <li><a class="dropdown-item" href="#">환경부란?</a></li>
+	            <li><a class="dropdown-item" href="introduce/a">환경부장관 인사말</a></li>
+	            <li><a class="dropdown-item" href="#">찾아오시는길</a></li>
 	          </ul>
 	        </li>
 	        
 	        <li class="nav-item dropdown">
-	          <a class="nav-link dropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-	            Dropdown link
+	          <a class="nav-link dropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="margin-right:25px;">
+	            	국민소통
 	          </a>
 	          <ul class="dropdown-menu">
-	            <li><a class="dropdown-item" href="#">Action</a></li>
-	            <li><a class="dropdown-item" href="#">Another action</a></li>
-	            <li><a class="dropdown-item" href="#">Something else here</a></li>
+	            <li><a class="dropdown-item" href="#">클린신고센터</a></li>
+	            <li><a class="dropdown-item" href="#">민원신청</a></li>
+	            <li><a class="dropdown-item" href="#">국민참여</a></li>
 	          </ul>
 	        </li>
 	        
 	        <li class="nav-item dropdown">
-	          <a class="nav-link dropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-	            Dropdown link
+	          <a class="nav-link dropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="margin-right:25px;">
+	            	법령·정책
 	          </a>
 	          <ul class="dropdown-menu">
-	            <li><a class="dropdown-item" href="#">Action</a></li>
-	            <li><a class="dropdown-item" href="#">Another action</a></li>
-	            <li><a class="dropdown-item" href="#">Something else here</a></li>
+	            <li><a class="dropdown-item" href="#">환경법령</a></li>
+	            <li><a class="dropdown-item" href="#">환경정책</a></li>
+	            <li><a class="dropdown-item" href="#">국회관련정보</a></li>
 	          </ul>
 	        </li>
 	        
 	        <li class="nav-item dropdown">
-	          <a class="nav-link dropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-	            Dropdown link
+	          <a class="nav-link dropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="margin-right:25px;">
+	            	정보공개
 	          </a>
 	          <ul class="dropdown-menu">
-	            <li><a class="dropdown-item" href="#">Action</a></li>
-	            <li><a class="dropdown-item" href="#">Another action</a></li>
-	            <li><a class="dropdown-item" href="#">Something else here</a></li>
+	            <li><a class="dropdown-item" href="#">정보공개</a></li>
+	            <li><a class="dropdown-item" href="#">공공데이터개방</a></li>
+	            <li><a class="dropdown-item" href="#">적극행정</a></li>
 	          </ul>
 	        </li>
 	        
 	        <li class="nav-item dropdown">
-	          <a class="nav-link dropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-	            Dropdown link
+	          <a class="nav-link dropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="margin-right:25px;">
+	            	발행물
 	          </a>
 	          <ul class="dropdown-menu">
-	            <li><a class="dropdown-item" href="#">Action</a></li>
-	            <li><a class="dropdown-item" href="#">Another action</a></li>
-	            <li><a class="dropdown-item" href="#">Something else here</a></li>
+	            <li><a class="dropdown-item" href="#">환경 간행물</a></li>
+	            <li><a class="dropdown-item" href="#">환경책자</a></li>
+	            <li><a class="dropdown-item" href="#">환경 웹진</a></li>
 	          </ul>
 	        </li>
 	        
 	        <li class="nav-item dropdown">
-	          <a class="nav-link dropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+	          <a class="nav-link dropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="margin-right:25px;">
 	            	게시판
 	          </a>
 	          <ul class="dropdown-menu">
